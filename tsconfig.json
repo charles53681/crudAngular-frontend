@@ -16,6 +16,10 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
+    //De lo contrario, debe inicializar todas sus variables, lo cual es un poco molesto
+
+    "strictPropertyInitialization": false,
+
     "lib": [
       "es2018",
       "dom"

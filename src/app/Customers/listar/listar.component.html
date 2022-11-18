@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <h3>Customers</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <table class="table table-hover" style="height:350px;">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th>ID</th>
+                        <th>CompanyName</th>
+                        <th>ContactTitle</th>
+                        <th>Phone</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr *ngFor="let customer of customers  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize;">
+                        <td>{{customer.customerID}}</td>
+                        <td>{{customer.companyName}}</td>
+                        <td>{{customer.contactName}}</td>
+                        <td>{{customer.phone}}</td>
+                        <td>
+                            <button (click)="updateCustomer2(customer.customerID)" class="btn btn-warning">Editar</button>
+                            <button (click)="deleteCustomer(customer.customerID)" class="btn btn-danger ms-2">Eliminar</button>
+                            <button (click)="detailCustomer(customer.customerID)" class="btn btn-primary ms-2">Detalles</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="float:left;">
+                <ngb-pagination [pageSize]="pageSize" [collectionSize]="customerLength" [(page)]="page">
+                    <ng-template ngbPaginationNumber let-page>{{page}}</ng-template>
+                </ngb-pagination>
+            </div>
+        </div>
+    </div>
+</div>
